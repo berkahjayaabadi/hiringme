@@ -1,0 +1,27 @@
+{
+  "name": "hiringme_be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/berkahjayaabadi/hiringme.git"
+  },
+  "keywords": [
+    "be"
+  ],
+  "author": "berkahjayaabadi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/berkahjayaabadi/hiringme/issues"
+  },
+  "homepage": "https://github.com/berkahjayaabadi/hiringme#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "pg": "^8.9.0",
+    "uuidv4": "^6.2.13"
+  }
+}
