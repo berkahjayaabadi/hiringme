@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Home, LandingPages } from "./pages";
+import { Home, LandingPages,Login } from "./pages";
 import "./assets/css/index.css";
 import { Editprofilework } from "./pages/editprofileworker/EditProfileWrk";
 
@@ -10,7 +10,8 @@ const App = () => {
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/" element={<LandingPages />} />
-        <Route path="/editprofilework" element={<Editprofilework/>} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/editprofilework" element={<Editprofilework />} />
       </Routes>
     </BrowserRouter>
   );
