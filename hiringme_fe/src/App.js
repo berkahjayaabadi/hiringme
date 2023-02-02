@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Home, LandingPages,Login } from "./pages";
+import { ForgotPassword, Home, LandingPages,Login, RegistWorker } from "./pages";
 import "./assets/css/index.css";
 import { Editprofilework } from "./pages/editprofileworker/EditProfileWrk";
 
@@ -10,8 +10,11 @@ const App = () => {
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/" element={<LandingPages />} />
-        <Route path="/Login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/editprofilework" element={<Editprofilework />} />
+        <Route path="/registworker" element={<RegistWorker />} />
+
       </Routes>
     </BrowserRouter>
   );
