@@ -9,6 +9,7 @@ import {
   HireCompany,
   EditProfileWrk,
   EditProfilCmpny,
+  RegistWorker
 } from "./pages";
 import "./assets/css/index.css";
 
