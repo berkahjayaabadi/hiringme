@@ -1,8 +1,10 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Home, LandingPages,Login } from "./pages";
+import { Home, LandingPages,Login,EditProfilCmpny,EditProfileWrk } from "./pages/index";
+
 import "./assets/css/index.css";
-import { Editprofilework } from "./pages/editprofileworker/EditProfileWrk";
+
+
 
 const App = () => {
   return (
@@ -11,7 +13,8 @@ const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/" element={<LandingPages />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/editprofilework" element={<Editprofilework />} />
+        <Route path="/editprofilework" element={<EditProfileWrk />} />
+        <Route path="/editprofilecompany" element={<EditProfilCmpny />} />
       </Routes>
     </BrowserRouter>
   );
