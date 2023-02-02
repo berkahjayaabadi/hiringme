@@ -4,6 +4,7 @@ import Login from "./Login";
 import HomeWorker from "./Worker/homeWorker/HomeWorker";
 import HireWorker from "./Worker/hireWorker/HireWorker";
 import HireCompany from "./Company/hireCompany/HireCompany";
+import RegistWorker from "./register/worker";
 
 export {
   LandingPages,
@@ -12,4 +13,5 @@ export {
   HomeWorker,
   HireWorker,
   HireCompany,
+  RegistWorker
 };

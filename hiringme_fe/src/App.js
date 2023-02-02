@@ -7,6 +7,7 @@ import {
   HomeWorker,
   HireWorker,
   HireCompany,
+  RegistWorker
 } from "./pages";
 import "./assets/css/index.css";
 import { Editprofilework } from "./pages/editprofileworker/EditProfileWrk";
