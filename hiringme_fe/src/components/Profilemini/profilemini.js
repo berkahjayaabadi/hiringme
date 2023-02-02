@@ -4,7 +4,7 @@ import axios from "axios";
 const Profilemini = () => {
   return (
     <>
-      <div className="card bg-base-100 shadow-xl sm:w-[27rem]">
+      <div className="card bg-base-100 shadow-xl max-[375px]:w-[19rem] max-[465px]:w-[25rem] sm:w-[28rem]">
         <form>
           <figure className="p-10 flex-col gap-2">
             <img

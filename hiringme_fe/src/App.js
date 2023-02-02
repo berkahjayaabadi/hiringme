@@ -7,10 +7,10 @@ import {
   HomeWorker,
   HireWorker,
   HireCompany,
-  RegistWorker
+  EditProfileWrk,
+  EditProfilCmpny,
 } from "./pages";
 import "./assets/css/index.css";
-import { Editprofilework } from "./pages/editprofileworker/EditProfileWrk";
 
 const App = () => {
   return (
@@ -22,9 +22,8 @@ const App = () => {
         <Route path="/hireworker" element={<HireWorker />} />
         <Route path="/hirecompany" element={<HireCompany />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/editprofilework" element={<Editprofilework />} />
+        <Route path="/editprofilework" element={<EditProfileWrk />} />
         <Route path="/registworker" element={<RegistWorker />} />
-
       </Routes>
     </BrowserRouter>
   );

@@ -4,7 +4,8 @@ import Login from "./Login";
 import HomeWorker from "./Worker/homeWorker/HomeWorker";
 import HireWorker from "./Worker/hireWorker/HireWorker";
 import HireCompany from "./Company/hireCompany/HireCompany";
-import RegistWorker from "./register/worker";
+import EditProfileWrk from "./editprofileworker/EditProfileWrk";
+import EditProfilCmpny from "./editprofilcompany/EditProfilCmpny";
 
 export {
   LandingPages,
@@ -13,5 +14,6 @@ export {
   HomeWorker,
   HireWorker,
   HireCompany,
-  RegistWorker
+  EditProfilCmpny,
+  EditProfileWrk
 };

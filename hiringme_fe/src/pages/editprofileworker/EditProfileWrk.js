@@ -2,8 +2,9 @@ import React from "react";
 import Profilemini from "../../components/Profilemini/profilemini";
 import NavbaraftrLogin from "../../components/NavbaraftrLogin/NavbaraftrLogin";
 import InputFormWorker from "../../components/InputForm/InputFormWorker";
+import Footer from "../../components/Footer/Footer";
 
-export function Editprofilework() {
+const EditProfileWrk = () => {
   return (
     <>
       <NavbaraftrLogin />
@@ -15,6 +16,9 @@ export function Editprofilework() {
           <InputFormWorker />
         </section>
       </section>
+        <Footer />
     </>
   );
-}
+};
+
+export default EditProfileWrk;
