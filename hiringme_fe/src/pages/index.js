@@ -1,8 +1,15 @@
-import Home from "./home/Home";
+import HomeCompany from "./Company/homeCompany/HomeCompany";
 import LandingPages from "./landingPages/LandingPages";
 import Login from "./Login";
-import ForgotPassword from "./forgotPassword";
-import RegistWorker from "./register/worker";
+import HomeWorker from "./Worker/homeWorker/HomeWorker";
+import HireWorker from "./Worker/hireWorker/HireWorker";
+import HireCompany from "./Company/hireCompany/HireCompany";
 
-export { LandingPages, Home, Login, ForgotPassword, RegistWorker };
-
+export {
+  LandingPages,
+  HomeCompany,
+  Login,
+  HomeWorker,
+  HireWorker,
+  HireCompany,
+};
