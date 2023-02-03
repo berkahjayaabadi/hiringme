@@ -7,6 +7,7 @@ import HireCompany from "./Company/hireCompany/HireCompany";
 import EditProfileWrk from "./editprofileworker/EditProfileWrk";
 import EditProfilCmpny from "./editprofilcompany/EditProfilCmpny";
 import RegistWorker from "./register/worker";
+import RegistCompany from "./register/company";
 
 export {
   LandingPages,
@@ -17,5 +18,6 @@ export {
   HireCompany,
   EditProfilCmpny,
   EditProfileWrk,
-  RegistWorker
+  RegistWorker,
+  RegistCompany
 };

@@ -9,9 +9,11 @@ import {
   HireCompany,
   EditProfileWrk,
   EditProfilCmpny,
-  RegistWorker
+  RegistWorker,
+  RegistCompany
 } from "./pages";
 import "./assets/css/index.css";
+import ForgotPassword from "./pages/forgotPassword";
 
 const App = () => {
   return (
@@ -25,6 +27,9 @@ const App = () => {
         <Route path="/Login" element={<Login />} />
         <Route path="/editprofilework" element={<EditProfileWrk />} />
         <Route path="/registworker" element={<RegistWorker />} />
+        <Route path="/registcompany" element={<RegistCompany />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
+
       </Routes>
     </BrowserRouter>
   );
