@@ -1,7 +1,5 @@
-import { React, useState, useEffect } from "react";
-import axios from "axios";
-
 const Profilemini = () => {
+  // const editProfileId = useSelector((state) => state.editProfileId);
   return (
     <>
       <div className="card bg-base-100 shadow-xl max-[375px]:w-[19rem] max-[465px]:w-[25rem] sm:w-[28rem]">

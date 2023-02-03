@@ -2,7 +2,7 @@ import React from "react";
 
 const InputFormCmpny = () => {
   return (
-    <section className="flex-12 shadow-xl p-7 max-[375px]:w-[19rem] max-[465px]:w-[25rem] sm:w-[35rem] md:w-[40rem] lg:w-[45rem]">
+    <section className="container flex-12 shadow-xxl p-7 max-[375px]:w-[19rem] max-[465px]:w-[25rem] sm:w-[35rem] md:w-[40rem] lg:w-[45rem] bg-white rounded-lg">
       <h1 className="text-xl font-bold pb-1">Data Diri</h1>
       <div className="border-b-4 mt-2 mb-[3rem] w-full"></div>
       <form>

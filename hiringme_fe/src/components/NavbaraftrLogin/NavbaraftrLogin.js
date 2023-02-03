@@ -26,6 +26,7 @@ const NavbaraftrLogin = () => {
               <div className="card-body">
                 <span className="font-bold text-lg">1 Notification</span>
                 <span className="text-info">From : Admin</span>
+                <img src={require('../../assets/images/chat/Chat.png')}></img>
                 <div className="card-actions">
                   <button className="btn btn-primary btn-block">
                     View Notification
