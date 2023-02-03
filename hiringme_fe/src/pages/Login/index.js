@@ -1,38 +1,51 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import '../../assets/css/index.css'
-import authImg from '../../assets/img/auth/auth-img-placeholder.svg'
+import '../../assets/css/auth/auth.css'
 
 const Login = () => {
   return (
       <>
-        <div className='lg:flex'>
-            <div id="auth-img" className='w-fit mx-auto -z-10 lg:fle' style={{background: `url(${authImg})`}}>
+        <div className='lg:flex max-h-screen lg:p-10 overflow-y-hidden'>
+            <div id="auth-img" className='w-fit mx-auto hidden lg:block lg:flex-1 bg-blend-overlay sm:hidden'>
                 {/* <img className='h-screen p-10' src={require('../../assets/img/auth/auth-img-placeholder.svg').default} /> */}
+                <div id="auth-bg-overlay" className='w-full h-full'>
+                    <div className='flex p-10'>
+                        <img className="px-1" src={require('../../assets/img/auth/brand-logo.svg').default} />
+                        <p className='pl-2 text-white font-semibold'>Peworld</p>
+                    </div>
+
+                    <h1 className='font-bold text-4xl leading-normal text-white p-20'>Temukan developer berbakat & terbaik di berbagai bidang keahlian</h1>
+                </div>
             </div>
 
 
-            <div id="auth-form" className="p-10 text-white h-screen lg:flex-1" style={{background: `url(${authImg})`}}>
-                <h2 className='text-lg font-bold -10 md:text-center'>Helo, Pewpeople</h2>
-                <p className='mb-5 mt-3 md:text-center'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
+            <div id="auth-form" className="p-10 text-white h-screen lg:flex-1 lg:text-start lg:mt-10">
+                <h2 className='text-lg font-bold md:text-center lg:text-header lg:text-xl lg:text-start'>Helo, Pewpeople</h2>
+                <p className='mb-5 mt-3 md:text-center lg:text-text lg:text-start'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
 
-                <form className='md:flex md:flex-col md:w-3/4 md:mx-auto'>
-                    <label for="email">
+                <form className='md:flex md:flex-col md:w-3/4 md:mx-auto lg:w-full'>
+                    <label for="email" className='lg:text-pale lg:text-sm'>
                         Email
                     </label>
-                    <input className='block w-full h-10 mt-2 rounded-lg p-2 mb-4' type="email" placeholder='Masukan alamat email'/>
+                    <input className='block w-full h-10 mt-2 rounded-sm p-2 mb-4 lg:border lg:border-placeholder' type="email" placeholder='Masukan alamat email'/>
 
-                    <label for="password" className="">
+                    <label for="password"  className='lg:text-pale lg:text-sm'>
                     Kata sandi
                     </label>
-                    <input className='block w-full h-10 mt-2 rounded-lg p-2 mb-5' type="password" placeholder='Masuk kata sandi'/>
+                    <input className='block w-full h-10 mt-2 rounded-s p-2 mb-5 lg:border lg:border-placeholder' type="password" placeholder='Masuk kata sandi'/>
 
                     <Link className='' to="/forgotPassword">Lupa kata sandi?</Link>
 
-                    <button type='submit' className='mb-4 mt-5 w-full px-4 py-2 rounded-sm block bg-primary'>Masuk</button>
+                    <button type='submit' className='mb-4 mt-5 w-full px-4 py-2 rounded-sm block bg-primary font-semibold'>Masuk</button>
 
-                    <p>Anda belum punya akun? <Link className='text-primary' to="/registworker">Daftar disini</Link></p>
                 </form>
+                    <p className='font-semibold text-header mt-4 text-center'>Daftar</p>
+
+                    <div id="btn-to-regist" className='flex justify-evenly mt-5'>
+                        <Link to="/registworker" className='bg-primary border-2 lg:bg-transparent lg:hover:bg-primary lg:hover:text-white transi ease-in-out duration-300 border-primary rounded-md lg:text-header font-semibold px-5 py-2'>Daftar Sebagai Pelamar</Link>
+                        <Link to="/registcompany" className='bg-secondary border-2 lg:bg-transparent lg:hover:bg-secondary lg:hover:text-white border-secondary rounded-md ease-in-out duration-300  lg:text-header font-semibold px-5 py-2'>Daftar Sebagai Perekrut</Link>
+                    </div>
 
             </div>
         </div>

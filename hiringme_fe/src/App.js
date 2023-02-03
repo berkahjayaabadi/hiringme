@@ -9,28 +9,31 @@ import {
   HireCompany,
   EditProfileWrk,
   EditProfilCmpny,
+  RegistWorker,
+  RegistCompany
 } from "./pages";
 import "./assets/css/index.css";
-import configureStore from "./redux/store";
-import { Provider } from "react-redux";
+import ForgotPassword from "./pages/forgotPassword";
 
 const App = () => {
   const { store } = configureStore();
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LandingPages />} />
-          <Route path="/homecompany" element={<HomeCompany />} />
-          <Route path="/homeworker" element={<HomeWorker />} />
-          <Route path="/hireworker" element={<HireWorker />} />
-          <Route path="/hirecompany" element={<HireCompany />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/editprofilework" element={<EditProfileWrk />} />
-          <Route path="/editprofilecompany" element={<EditProfilCmpny />} />
-        </Routes>
-      </BrowserRouter>
-    </Provider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPages />} />
+        <Route path="/homecompany" element={<HomeCompany />} />
+        <Route path="/homeworker" element={<HomeWorker />} />
+        <Route path="/hireworker" element={<HireWorker />} />
+        <Route path="/hirecompany" element={<HireCompany />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/editprofilework" element={<EditProfileWrk />} />
+        <Route path="/editprofilecompany" element={<EditProfilCmpny />} />
+        <Route path="/registworker" element={<RegistWorker />} />
+        <Route path="/registcompany" element={<RegistCompany />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
+
+      </Routes>
+    </BrowserRouter>
   );
 };
 
