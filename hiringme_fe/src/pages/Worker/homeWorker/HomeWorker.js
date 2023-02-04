@@ -1,6 +1,18 @@
 import React from "react";
 import NavbaraftrLogin from "../../../components/NavbaraftrLogin/NavbaraftrLogin";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Footer from "../../../components/Footer/Footer";
+import { getCompanyId } from "../../../redux/actions/ProfileCmpny";
+
 const HomeWorker = () => {
+  const { data, loading, error } = useSelector((state) => state.profileCompany);
+  console.log(data, "Halo");
+  console.log(loading);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCompanyId());
+  }, []);
   return (
     <div>
       <NavbaraftrLogin />
@@ -51,19 +63,22 @@ const HomeWorker = () => {
           </div>
         </section>
         <section className="mt-10 grid grid-cols-1 gap-7 p-3 mx-[1rem] sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item) => (
-            <div className="card bg-base-100 shadow-xl  hover:cursor-pointer p-2">
+          {data?.map((item) => (
+            <div
+              key={item.id}
+              className="card bg-base-100 shadow-xl  hover:cursor-pointer p-2"
+            >
               <figure>
                 <img
                   className="h-28 w-28 shadow-xl mr-20 p-2"
-                  src="https://placeimg.com/200/280/arch"
+                  src={item.avatar}
                   alt="Shoes"
                 />
               </figure>
               <div className="card-body p-2">
-                <h2 className="card-title">PT BERKAH JAYA ABADI</h2>
-                <p>Financial</p>
-                <p>🏠 London</p>
+                <h2 className="card-title">{item.name}</h2>
+                <p>{item.job_type}</p>
+                <p>🏠 {item.address}</p>
                 <div className="flex flex-row justify-end px-4">
                   <h1 className="bg-primary rounded-lg  text-sm">
                     More Information ▷▷▷
@@ -71,7 +86,7 @@ const HomeWorker = () => {
                 </div>
               </div>
             </div>
-          ))}
+          )) ?? "Loading..."}
         </section>
         <section className="self-center mt-4">
           <div className="btn-group ">

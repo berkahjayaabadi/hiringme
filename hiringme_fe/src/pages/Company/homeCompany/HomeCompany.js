@@ -88,7 +88,7 @@ const HomeCompany = () => {
                   </div>
                 </div>
               </div>
-            )) ?? null}
+            )) ?? ('Loading...')}
           </section>
           <section className="self-center mt-4 mb-10">
             <div className="btn-group ">
