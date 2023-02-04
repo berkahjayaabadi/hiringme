@@ -11,6 +11,7 @@ app.use(urlencoded({ extended: true }));
 app.use(json());
 app.use("/api/v1/", router);
 
+
 app.get("*", (req, res) => {
   return res.send({
     status: 404,

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const getAllprofileRequest = () => {
   return {
@@ -24,12 +25,44 @@ export const getProfileId = () => {
   return (dispatch) => {
     dispatch(getAllprofileRequest());
     return axios
-      .get(`https://63dbba8ec45e08a0434c7f61.mockapi.io/Worker`)
+      .get(`http://localhost:5000/api/v1/profileDashboard/skill`)
       .then((res) => {
         dispatch(getProfileSuccess(res.data));
       })
       .catch((err) => {
         dispatch(getProfileFail(err.response.data));
+      });
+  };
+};
+
+// Post
+
+const postProfileSuccess = (data) => {
+  return {
+    type: "POST_ALL_DATA_PROFILE_SUCCESS",
+    payload: data,
+  };
+};
+
+const postProfileFail = (err) => {
+  return {
+    type: "POST_ALL_DATA_PROFILE_FAIL",
+    payload: err,
+  };
+};
+
+export const postProfile = (postData) => {
+  return (dispatch) => {
+    return axios({
+      method: "Post",
+      url: "https://63dbba8ec45e08a0434c7f61.mockapi.io/Worker",
+      data: postData,
+    })
+      .then((res) => {
+        dispatch(postProfileSuccess(res.data));
+      })
+      .catch((err) => {
+        dispatch(postProfileFail(err.response.data));
       });
   };
 };
