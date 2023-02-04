@@ -28,14 +28,13 @@ const Login = () => {
                     <label for="email" className='lg:text-pale lg:text-sm'>
                         Email
                     </label>
-                    <input className='block w-full h-10 mt-2 rounded-sm p-2 mb-4 lg:border lg:border-placeholder' type="email" placeholder='Masukan alamat email'/>
+                    <input className='block w-full h-10 mt-2 rounded-sm p-2 mb-4 lg:border lg:border-placeholder text-header text-header' type="email" placeholder='Masukan alamat email'/>
 
                     <label for="password"  className='lg:text-pale lg:text-sm'>
                     Kata sandi
                     </label>
-                    <input className='block w-full h-10 mt-2 rounded-s p-2 mb-5 lg:border lg:border-placeholder' type="password" placeholder='Masuk kata sandi'/>
+                    <input className='block w-full h-10 mt-2 rounded-s p-2 mb-5 lg:border lg:border-placeholder text-header' type="password" placeholder='Masuk kata sandi'/>
 
-                    <Link className='' to="/forgotPassword">Lupa kata sandi?</Link>
 
                     <button type='submit' className='mb-4 mt-5 w-full px-4 py-2 rounded-sm block bg-primary font-semibold'>Masuk</button>
 
