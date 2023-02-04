@@ -1,6 +1,6 @@
 const initialState = { loading: false, data: [], error: [] };
 
-export const editCompanyReducer = (state = initialState, action = {}) => {
+export const CompanyReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case "GET_ALL_DATA_COMPANY_REQUEST":
       return {

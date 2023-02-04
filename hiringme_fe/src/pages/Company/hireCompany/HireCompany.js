@@ -3,18 +3,16 @@ import NavbaraftrLogin from "../../../components/NavbaraftrLogin/NavbaraftrLogin
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../../components/Footer/Footer";
-import { getProfileId } from "../../../redux/actions/ProfileWorker";
-
+import { getAllProfile } from "../../../redux/actions/ProfileWorker";
 
 const HireCompany = () => {
   const { data, loading, error } = useSelector((state) => state.profileWorkers);
   console.log(data, "Halo");
   console.log(loading);
 
-
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getProfileId());
+    dispatch(getAllProfile());
   }, []);
   return (
     <div>
