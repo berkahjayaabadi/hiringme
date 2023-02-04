@@ -3,7 +3,9 @@ const { urlencoded, json } = require("express");
 const express = require("express");
 const app = express();
 const router = require("./src/route/route_index");
+const cors = require("cors");
 
+app.use(cors());
 app.use(urlencoded({ extended: true }));
 
 app.use(json());
