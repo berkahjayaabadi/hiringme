@@ -12,7 +12,7 @@ const HomeCompany = () => {
   console.log(data.data, "Halo");
   console.log(loading);
 
-  
+
 
   const goDetail = (id) =>{
     navigate(`/hirecompany/${id}`)
@@ -75,7 +75,7 @@ const HomeCompany = () => {
           <section className="mt-10 grid grid-cols-1 gap-7 p-3 mx-[1rem] sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {data?.map((item) => (
               <div
-                key={item.id}
+                key={item.user_id}
                 className="card bg-base-100 shadow-xl  hover:cursor-pointer p-2"
               >
                 <figure>
@@ -88,7 +88,7 @@ const HomeCompany = () => {
                 <div className="card-body p-2">
                   <h2 onClick={()=>{
                     goDetail(item.id)
-                  }} className="card-title">{item.skill_name}</h2>
+                  }} className="card-title">{item.name}</h2>
                   <p>{item.email}</p>
                   <p>🏠 {item.address}</p>
                   <div className="flex flex-row justify-center px-4">
