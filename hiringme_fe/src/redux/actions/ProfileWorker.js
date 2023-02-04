@@ -7,30 +7,32 @@ const getAllprofileRequest = () => {
   };
 };
 
-const getProfileSuccess = (data) => {
+const getAllProfileSuccess = (data) => {
   return {
     type: "GET_ALL_DATA_PROFILE_SUCCESS",
     payload: data,
   };
 };
 
-const getProfileFail = (err) => {
+const getAllProfileFail = (err) => {
   return {
     type: "GET_ALL_DATA_PROFILE_FAIL",
     payload: err,
   };
 };
 
-export const getProfileId = () => {
+export const getAllProfile = () => {
   return (dispatch) => {
     dispatch(getAllprofileRequest());
     return axios
-      .get(`http://localhost:5000/api/v1/profileDashboard/skill`)
+      .get(
+        `http://localhost:5000/api/v1/profileDashboard/skill/1d4f1de3-b4bc-4987-87bd-a157f490d1f0`
+      )
       .then((res) => {
-        dispatch(getProfileSuccess(res.data));
+        dispatch(getAllProfileSuccess(res.data.data));
       })
       .catch((err) => {
-        dispatch(getProfileFail(err.response.data));
+        dispatch(getAllProfileFail(err.response.data));
       });
   };
 };

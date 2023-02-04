@@ -1,6 +1,6 @@
 const initialState = { loading: false, data: [], error: [] };
 
-export const editProfileIdReducer = (state = initialState, action = {}) => {
+export const ProfileReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case "GET_ALL_DATA_PROFILE_REQUEST":
       return {

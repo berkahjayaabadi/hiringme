@@ -3,7 +3,7 @@ import NavbaraftrLogin from "../../../components/NavbaraftrLogin/NavbaraftrLogin
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../../components/Footer/Footer";
-import { getCompanyId } from "../../../redux/actions/ProfileCmpny";
+import { getAllCompany } from "../../../redux/actions/ProfileCmpny";
 
 const HomeWorker = () => {
   const { data, loading, error } = useSelector((state) => state.profileCompany);
@@ -11,7 +11,7 @@ const HomeWorker = () => {
   console.log(loading);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getCompanyId());
+    dispatch(getAllCompany());
   }, []);
   return (
     <div>

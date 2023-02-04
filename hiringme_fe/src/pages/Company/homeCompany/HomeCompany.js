@@ -3,24 +3,22 @@ import NavbaraftrLogin from "../../../components/NavbaraftrLogin/NavbaraftrLogin
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../../components/Footer/Footer";
-import { getProfileId } from "../../../redux/actions/ProfileWorker";
-import { Link,useNavigate } from "react-router-dom";
+import { getAllProfile } from "../../../redux/actions/ProfileWorker";
+import { Link, useNavigate } from "react-router-dom";
 
 const HomeCompany = () => {
   const { data, loading, error } = useSelector((state) => state.profileWorkers);
   const navigate = useNavigate();
-  console.log(data.data, "Halo");
+  console.log(data, "Halo");
   console.log(loading);
 
-  
-
-  const goDetail = (id) =>{
-    navigate(`/hirecompany/${id}`)
-  }
+  // const goDetail = (id) => {
+  //   navigate(`/hirecompany/${id}`);
+  // };
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getProfileId());
+    dispatch(getAllProfile());
   }, []);
   return (
     <>
@@ -81,14 +79,12 @@ const HomeCompany = () => {
                 <figure>
                   <img
                     className="h-28 w-28 shadow-xl mr-20 p-2"
-                    src={item.avatar}
+                    src=""
                     alt="Shoes"
                   />
                 </figure>
                 <div className="card-body p-2">
-                  <h2 onClick={()=>{
-                    goDetail(item.id)
-                  }} className="card-title">{item.skill_name}</h2>
+                  <h2 className="card-title">{item.name}</h2>
                   <p>{item.email}</p>
                   <p>🏠 {item.address}</p>
                   <div className="flex flex-row justify-center px-4">
@@ -100,7 +96,7 @@ const HomeCompany = () => {
                   </div>
                 </div>
               </div>
-            )) ?? ('Loading...')}
+            )) ?? "Loading..."}
           </section>
           <section className="self-center mt-4 mb-10">
             <div className="btn-group ">

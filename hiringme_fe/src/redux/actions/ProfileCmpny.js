@@ -6,30 +6,30 @@ const getAllCompanyRequest = () => {
   };
 };
 
-const getCompanySuccess = (data) => {
+const getAllCompanySuccess = (data) => {
   return {
     type: "GET_ALL_DATA_COMPANY_SUCCESS",
     payload: data,
   };
 };
 
-const getCompanyFail = (err) => {
+const getAllCompanyFail = (err) => {
   return {
     type: "GET_ALL_DATA_COMPANY_FAIL",
     payload: err,
   };
 };
 
-export const getCompanyId = () => {
+export const getAllCompany = () => {
   return (dispatch) => {
     dispatch(getAllCompanyRequest());
     return axios
       .get(`https://63dbba8ec45e08a0434c7f61.mockapi.io/Company`)
       .then((res) => {
-        dispatch(getCompanySuccess(res.data));
+        dispatch(getAllCompanySuccess(res.data));
       })
       .catch((err) => {
-        dispatch(getCompanyFail(err.response.data));
+        dispatch(getAllCompanyFail(err.response.data));
       });
   };
 };

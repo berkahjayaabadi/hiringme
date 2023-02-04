@@ -1,13 +1,13 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import thunk from "redux-thunk";
-import { editProfileIdReducer } from "./reducer/ProfileWork";
-import { editCompanyReducer } from "./reducer/ProfileCmpny";
+import { ProfileReducer } from "./reducer/ProfileWork";
+import { CompanyReducer } from "./reducer/ProfileCmpny";
 import { postProfileIdReducer } from "./reducer/ProfileWork";
 
 const reducers = combineReducers({
-  profileWorkers: editProfileIdReducer,
+  profileWorkers: ProfileReducer,
   postProfileWorkers: postProfileIdReducer,
-  profileCompany: editCompanyReducer,
+  profileCompany: CompanyReducer,
 });
 
 const configureStore = () => {
