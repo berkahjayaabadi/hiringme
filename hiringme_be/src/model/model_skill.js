@@ -5,14 +5,23 @@ const profileDashboardSkillModel = {
   get: function (queryParams) {
     console.log(queryParams);
     return new Promise((resolve, reject) => {
-      db.query(
-        `SELECT * FROM skill
-            INNER JOIN user ON skill.user_id=user.id ${this.query(
-              queryParams,
-              queryParams.sortBy,
-              queryParams.limit
-            )}`,
+      db.query(`SELECT * FROM skill`, (err, result) => {
+        if (err) {
+          return reject(err.message);
+        } else {
+          return resolve(result.rows);
+        }
+      });
+    });
+  },
 
+  getSkillById: (id) => {
+    return new Promise((resolve, reject) => {
+      db.query(
+        `SELECT users.id, users.name, users.email, users.company, users.company_role, json_agg(row_to_json(skill)) skills
+         from users
+      LEFT JOIN skill on users.id=skill.user_id
+      GROUP BY users.id`,
         (err, result) => {
           if (err) {
             return reject(err.message);
@@ -21,18 +30,6 @@ const profileDashboardSkillModel = {
           }
         }
       );
-    });
-  },
-
-  getDetail: (id) => {
-    return new Promise((resolve, reject) => {
-      db.query(`SELECT * from skill WHERE id='${id}'`, (err, result) => {
-        if (err) {
-          return reject(err.message);
-        } else {
-          return resolve(result.rows[0]);
-        }
-      });
     });
   },
 

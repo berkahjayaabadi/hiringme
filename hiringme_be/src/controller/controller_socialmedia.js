@@ -10,9 +10,9 @@ const profileDashboardSocmedController = {
         return res.status(500).send({ message: error });
       });
   },
-  getDetail: (req, res) => {
+  getSocmedById: (req, res) => {
     return profileDashboardSocmedModel
-      .getDetail(req.params.id)
+      .getSocmedById(req.params.id)
       .then((result) => {
         return res.status(200).send({ message: "success", data: result });
       })
