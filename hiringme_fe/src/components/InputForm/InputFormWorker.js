@@ -1,13 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { postProfile } from "../../redux/actions/ProfileWorker";
 
 const InputFormWorker = () => {
+  const { data, loading, error } = useSelector(
+    (state) => state.postProfileWorkers
+  );
+
+  const [formEditProfile, setformEditProfile] = useState({
+    namalengkap: "",
+    jobdesk: "",
+    domisili: "",
+    instagram: "",
+    github: "",
+    gitlab: "",
+    deskripsiSingkat: "",
+  });
+  const dispatch = useDispatch();
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log(formEditProfile.namalengkap);
+    const postData = new FormData(e.target);
+    postData.append("name", formEditProfile.namalengkap);
+
+    dispatch(postProfile(postData));
+  };
+
   return (
     <>
       {/* Data Diri */}
       <section className="flex-12 shadow-xl p-7">
         <h1 className="text-xl font-bold pb-1">Data Diri</h1>
         <div className="border-b-4 mt-2 mb-[3rem] w-full"></div>
-        <form>
+        <form onSubmit={onSubmit}>
           <div className="form-control w-full">
             <label className="label">
               <span className="label-text">Nama Lengkap :</span>
@@ -16,6 +41,12 @@ const InputFormWorker = () => {
               type="text"
               placeholder="Type here"
               className="input input-bordered w-full"
+              onChange={(e) =>
+                setformEditProfile({
+                  ...formEditProfile,
+                  namalengkap: e.target.value,
+                })
+              }
             />
           </div>
           <div className="form-control w-full pt-8">
@@ -77,7 +108,7 @@ const InputFormWorker = () => {
             type="text"
             class="input input-bordered w-full p-4 outline-pale h-20"
           />
-          <button type="click" className="btn btn-warning mt-8">
+          <button type="submit" className="btn btn-warning mt-8">
             Simpan
           </button>
         </form>

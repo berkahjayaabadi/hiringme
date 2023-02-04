@@ -4,10 +4,20 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../../components/Footer/Footer";
 import { getProfileId } from "../../../redux/actions/ProfileWorker";
+import { Link,useNavigate } from "react-router-dom";
+
 const HomeCompany = () => {
   const { data, loading, error } = useSelector((state) => state.profileWorkers);
-  console.log(data, "Halo");
+  const navigate = useNavigate();
+  console.log(data.data, "Halo");
   console.log(loading);
+
+  
+
+  const goDetail = (id) =>{
+    navigate(`/hirecompany/${id}`)
+  }
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProfileId());
@@ -76,8 +86,10 @@ const HomeCompany = () => {
                   />
                 </figure>
                 <div className="card-body p-2">
-                  <h2 className="card-title">{item.name}</h2>
-                  <p>{item.Job}</p>
+                  <h2 onClick={()=>{
+                    goDetail(item.id)
+                  }} className="card-title">{item.skill_name}</h2>
+                  <p>{item.email}</p>
                   <p>🏠 {item.address}</p>
                   <div className="flex flex-row justify-center px-4">
                     <h1 className="bg-primary rounded-lg p-1 mx-1">

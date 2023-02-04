@@ -27,3 +27,30 @@ export const editProfileIdReducer = (state = initialState, action = {}) => {
       };
   }
 };
+
+// Post
+
+const initialStatePost = { data: [], error: [] };
+
+export const postProfileIdReducer = (state = initialStatePost, action = {}) => {
+  switch (action.type) {
+    case "POST_ALL_DATA_PROFILE_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        data: action.payload,
+      };
+    case "POST_ALL_DATA_PROFILE_FAIL":
+      return {
+        ...state,
+        loading: false,
+        data: [],
+        error: action.payload,
+      };
+
+    default:
+      return {
+        state,
+      };
+  }
+};
