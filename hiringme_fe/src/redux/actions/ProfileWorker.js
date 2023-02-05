@@ -66,7 +66,7 @@ export const getProfileById = (id) => {
     return axios
       .get(`http://localhost:5000/api/v1/profileDashboard/skill/${id}`)
       .then((res) => {
-        dispatch(getProfileByIdSuccess(res.data));
+        dispatch(getProfileByIdSuccess(res.data[0]));
       })
       .catch((err) => {
         dispatch(getProfileByIdFail(err.response.data));
@@ -94,7 +94,7 @@ export const postProfile = (postData) => {
   return (dispatch) => {
     return axios({
       method: "Post",
-      url: "https://63dbba8ec45e08a0434c7f61.mockapi.io/Worker",
+      url: "http://localhost:5000/api/v1/auth/register",
       data: postData,
     })
       .then((res) => {
@@ -122,11 +122,11 @@ const patchProfileFail = (err) => {
   };
 };
 
-export const patchProfile = (patchData,id) => {
+export const patchProfile = (patchData, id) => {
   return (dispatch) => {
     return axios({
       method: "PATCH",
-      url: `http://localhost:5000/api/v1/profileDashboard/skill/1d4f1de3-b4bc-4987-87bd-a157f490d1f0`,
+      url: `http://localhost:5000/api/v1/auth/users/${id}`,
       data: patchData,
     })
       .then((res) => {

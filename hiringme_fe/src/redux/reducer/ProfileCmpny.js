@@ -45,3 +45,60 @@ export const CompanyReducer = (state = initialState, action = {}) => {
       };
   }
 };
+
+// Post
+
+const initialStatePost = { data: [], error: [] };
+
+export const postCompanyIdReducer = (state = initialStatePost, action = {}) => {
+  switch (action.type) {
+    case "POST_ALL_DATA_COMPANY_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        data: action.payload,
+      };
+    case "POST_ALL_DATA_COMPANY_FAIL":
+      return {
+        ...state,
+        loading: false,
+        data: [],
+        error: action.payload,
+      };
+
+    default:
+      return {
+        state,
+      };
+  }
+};
+
+// Patch
+
+const initialStatePatch = { data: [], error: [] };
+
+export const patchCompanyIdReducer = (
+  state = initialStatePatch,
+  action = {}
+) => {
+  switch (action.type) {
+    case "PATCH_ALL_DATA_COMPANY_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        data: action.payload,
+      };
+    case "PATCH_ALL_DATA_COMPANY_FAIL":
+      return {
+        ...state,
+        loading: false,
+        data: [],
+        error: action.payload,
+      };
+
+    default:
+      return {
+        state,
+      };
+  }
+};

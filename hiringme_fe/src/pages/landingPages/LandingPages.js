@@ -1,12 +1,12 @@
 import React from "react";
-import NavbaraftrLogin from "../../components/NavbaraftrLogin/NavbaraftrLogin";
+import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import heroimg from "../../assets/img/landing/heroimg.svg";
 
 const LandingPages = () => {
   return (
     <div>
-      <NavbaraftrLogin />
+      <Navbar />
       <header className="container max-w-5xl mx-auto flex min-[320px]:flex-col md:flex-row lg:flex-row sm:flex-col mt-6">
         <section className="basis-[50%]">
           <h1 className="text-text text-5xl font-semibold mt-12">

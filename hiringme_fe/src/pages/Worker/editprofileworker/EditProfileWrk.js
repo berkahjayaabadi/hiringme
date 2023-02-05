@@ -1,7 +1,7 @@
 import React from "react";
 import "../../../assets/css/index.css";
 import Profilemini from "../../../components/Profilemini/profilemini";
-import NavbaraftrLogin from "../../../components/NavbaraftrLogin/NavbaraftrLogin";
+import Navbar from "../../../components/Navbar/Navbar";
 import InputFormWorker from "../../../components/InputForm/InputFormWorker";
 import Footer from "../../../components/Footer/Footer";
 
@@ -9,7 +9,7 @@ const EditProfileWrk = () => {
   return (
     <>
       <body className="background">
-        <NavbaraftrLogin />
+        <Navbar />
         <section className="flex max-[965px]:flex-wrap gap-8 m-[8rem] justify-center">
           <section className="">
             <Profilemini />
