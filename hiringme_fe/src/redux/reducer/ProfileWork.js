@@ -72,3 +72,33 @@ export const postProfileIdReducer = (state = initialStatePost, action = {}) => {
       };
   }
 };
+
+// Patch
+
+const initialStatePatch = { data: [], error: [] };
+
+export const patchProfileIdReducer = (
+  state = initialStatePatch,
+  action = {}
+) => {
+  switch (action.type) {
+    case "PATCH_ALL_DATA_PROFILE_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        data: action.payload,
+      };
+    case "PATCH_ALL_DATA_PROFILE_FAIL":
+      return {
+        ...state,
+        loading: false,
+        data: [],
+        error: action.payload,
+      };
+
+    default:
+      return {
+        state,
+      };
+  }
+};
