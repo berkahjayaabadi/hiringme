@@ -24,6 +24,7 @@ const Login = () => {
             console.log(res.data.data)
             const id = res.data.data.user.id;
             localStorage.setItem('@userLogin', JSON.stringify(res.data.data.token));
+            localStorage.setItem('@id', res.data.data.user.id)
             if(!res.data.data.user.company == "" || undefined || null) {
                 localStorage.setItem('@company', JSON.stringify(res.data.data.user.company));
             };
@@ -37,6 +38,15 @@ const Login = () => {
             setValidate({error: true, message: err.response.data.message})
         })
     }
+    const id = localStorage.getItem('@id');
+
+    useEffect(()=> {
+        if(localStorage.getItem('@userLogin') && localStorage.getItem('@company')) {    
+            navigate('/profilecompany/'+id)
+        } else if(localStorage.getItem('@userLogin') && !localStorage.getItem('@company')) {
+            navigate(`/profileworker/${id}`)
+        }
+    },[])
 
   return (
       <>

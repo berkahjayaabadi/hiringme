@@ -21,7 +21,7 @@ const ProfileCompany = () => {
   }, [dispatch, id]);
   return (
     <>
-        {/* <Navbar /> */}
+        <Navbar />
         <div id="container" className='w-[80vw] mx-auto mb-[50vh]'>
             <div className='bg-secondary min-h-[30vh] rounded-t-lg'></div>
             <img className='bg-header h-40 w-40 rounded-full -mt-20 mx-auto' />
