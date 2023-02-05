@@ -15,14 +15,21 @@ const InputFormCmpny = () => {
   React.useEffect(() => {
     axios
       .all([
-        axios.get("http://localhost:5000/api/v1//profileDashboard/skill"),
-        axios.get("http://localhost:5000/api/v1/profileDashboard/socmed"),
+        axios.patch("http://localhost:5000/api/v1//profileDashboard/skill", {
+          user_id: "",
+          skill_name: "",
+        }),
+        axios.patch("http://localhost:5000/api/v1/profileDashboard/socmed", {
+          user_id: "",
+          socmed_name: "",
+          link: "",
+        }),
       ])
       .then(
         axios.spread((skillResponse, socmedResponse) => {
-          setData(skillResponse.data.data);
-          console.log(skillResponse.data.data);
-          console.log(socmedResponse.data.data);
+          setData(...skillResponse.data.data);
+          console.log(...skillResponse.data.data);
+          console.log(...socmedResponse.data.data);
         })
       )
       .catch((error) => {
