@@ -3,17 +3,21 @@ import NavbaraftrLogin from "../../../components/NavbaraftrLogin/NavbaraftrLogin
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../../components/Footer/Footer";
-import { getAllProfile } from "../../../redux/actions/ProfileWorker";
+import { getProfileById } from "../../../redux/actions/ProfileWorker";
+import { useParams } from "react-router-dom";
 
 const HireCompany = () => {
+  const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.profileWorkers);
   console.log(data, "Halo");
   console.log(loading);
+  const { id } = useParams();
+  console.log(id, "ini id");
 
-  const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllProfile());
-  }, []);
+    dispatch(getProfileById(id));
+  }, [dispatch, id]);
+
   return (
     <div>
       <navbar className="shadow-lg">

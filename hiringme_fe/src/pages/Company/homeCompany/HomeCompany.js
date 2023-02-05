@@ -75,6 +75,7 @@ const HomeCompany = () => {
               <div
                 key={item.user_id}
                 className="card bg-base-100 shadow-xl  hover:cursor-pointer p-2"
+                onClick={() => navigate(`/hirecompany/${item.id}`)}
               >
                 <figure>
                   <img
@@ -89,9 +90,11 @@ const HomeCompany = () => {
                   <p>🏠 {item.address}</p>
                   <div className="flex flex-row justify-center px-4">
                     <h1 className="bg-primary rounded-lg p-1 mx-1">
-                      Javascripts
+                      {item?.skills?.[0]?.skill_name}
                     </h1>
-                    <h1 className="bg-primary rounded-lg p-1 mx-1">PHP</h1>
+                    <h1 className="bg-primary rounded-lg p-1 mx-1">
+                      {item?.skills?.[1]?.skill_name}
+                    </h1>
                     <h1 className="p-1">more</h1>
                   </div>
                 </div>
