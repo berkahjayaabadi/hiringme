@@ -12,7 +12,7 @@ const HireCompany = () => {
   console.log(data, "Halo");
   console.log(loading);
   const { id } = useParams();
-  console.log(id, "ini id");
+  // console.log(id, "ini id");
 
   useEffect(() => {
     dispatch(getProfileById(id));

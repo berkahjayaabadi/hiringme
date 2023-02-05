@@ -20,7 +20,7 @@ const InputFormWorker = () => {
   console.log(data);
   const dispatch = useDispatch();
   const { id } = useParams();
-
+  console.log(id, "ini id");
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(formEditProfile);
