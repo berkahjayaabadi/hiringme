@@ -1,12 +1,27 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Footer from '../../../components/Footer/Footer'
 import Navbar from "../../../components/Navbar/Navbar";
 import { Link } from 'react-router-dom'
+import { getProfileById } from '../../../redux/actions/ProfileWorker'
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 const ProfileCompany = () => {
+  const {id} = useParams();
+  console.log(id)
+  const [isToggled, setIsToggled]= useState(false)
+  const { data, loading, error } = useSelector((state) => state.profileWorkers);
+  const navigate = useNavigate();
+  console.log(data)
+ 
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProfileById(id));
+  }, [dispatch, id]);
   return (
     <>
-        <Navbar />
+        {/* <Navbar /> */}
         <div id="container" className='w-[80vw] mx-auto mb-[50vh]'>
             <div className='bg-secondary min-h-[30vh] rounded-t-lg'></div>
             <img className='bg-header h-40 w-40 rounded-full -mt-20 mx-auto' />

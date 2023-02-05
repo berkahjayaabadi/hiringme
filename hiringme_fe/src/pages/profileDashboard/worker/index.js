@@ -16,7 +16,7 @@ const ProfileWorker = () => {
   const [isToggled, setIsToggled]= useState(false)
   const { data, loading, error } = useSelector((state) => state.profileWorkers);
   const navigate = useNavigate();
-  // console.log(data)
+  console.log(data)
  
   const dispatch = useDispatch();
   useEffect(() => {

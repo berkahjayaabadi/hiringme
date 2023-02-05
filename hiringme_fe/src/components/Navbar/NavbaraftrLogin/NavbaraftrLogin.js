@@ -104,9 +104,9 @@ const NavbaraftrLogin = ({ setIsLogin }) => {
                 onClick={() => {
                   localStorage.removeItem("@company");
                   localStorage.removeItem("@userLogin");
-                  localStorage.removeItem("@token");
-                  localStorage.removeItem("@userCompany");
-                  localStorage.removeItem("@ompany");
+                  // localStorage.removeItem("@token");
+                  // localStorage.removeItem("@userCompany");
+                  // localStorage.removeItem("@ompany");
                   setIsLogin(false);
                 }}
               >

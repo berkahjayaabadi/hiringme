@@ -64,9 +64,9 @@ export const getProfileById = (id) => {
   return (dispatch) => {
     dispatch(getProfileByIdRequest(id));
     return axios
-      .get(`http://localhost:5000/api/v1/profileDashboard/skill/${id}`)
+      .get(`http://localhost:5000/api/v1/auth/user/${id}`)
       .then((res) => {
-        dispatch(getProfileByIdSuccess(res.data[0]));
+        dispatch(getProfileByIdSuccess(res.data.data));
       })
       .catch((err) => {
         dispatch(getProfileByIdFail(err.response.data));
