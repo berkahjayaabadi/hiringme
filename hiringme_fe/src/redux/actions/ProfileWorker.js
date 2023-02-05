@@ -25,9 +25,7 @@ export const getAllProfile = () => {
   return (dispatch) => {
     dispatch(getAllprofileRequest());
     return axios
-      .get(
-        `http://localhost:5000/api/v1/profileDashboard/skill/1d4f1de3-b4bc-4987-87bd-a157f490d1f0`
-      )
+      .get(`http://localhost:5000/api/v1/auth/users`)
       .then((res) => {
         dispatch(getAllProfileSuccess(res.data.data));
       })
@@ -64,9 +62,9 @@ export const getProfileById = (id) => {
   return (dispatch) => {
     dispatch(getProfileByIdRequest(id));
     return axios
-      .get(`http://localhost:5000/api/v1/profileDashboard/skill/${id}`)
+      .get(`http://localhost:5000/api/v1/auth/users/${id}`)
       .then((res) => {
-        dispatch(getProfileByIdSuccess(res.data[0]));
+        dispatch(getProfileByIdSuccess(res.data.data));
       })
       .catch((err) => {
         dispatch(getProfileByIdFail(err.response.data));

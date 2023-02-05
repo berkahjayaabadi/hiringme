@@ -12,12 +12,12 @@ const NavbaraftrLogin = ({ setIsLogin }) => {
       navigate("/");
     }
   }, []);
-  const { data, loading, error } = useSelector((state) => state.profileWorkers);
-  console.log(data);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllProfile());
-  }, []);
+  // const { data, loading, error } = useSelector((state) => state.profileWorkers);
+  // console.log(data);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getAllProfile());
+  // }, []);
   return (
     <>
       <div className="navbar bg-base-100">
@@ -91,12 +91,14 @@ const NavbaraftrLogin = ({ setIsLogin }) => {
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-              {data?.map((item) => (
-                <li onClick={() => navigate(`/editprofilework/${item.id}`)}>
-                  Profile
-                  <span className="badge">New</span>
-                </li>
-              )) ??<div>Home</div>}
+              {/* {data?.map((item) => ( */}
+              <li onClick={() => navigate(`/editprofilework/:id`)}>
+                Profile
+                <span className="badge">New</span>
+              </li>
+              {/* )) ?? */}
+              <div>Home</div>
+              {/* } */}
               <li>
                 <a>Settings</a>
               </li>
@@ -104,9 +106,9 @@ const NavbaraftrLogin = ({ setIsLogin }) => {
                 onClick={() => {
                   localStorage.removeItem("@company");
                   localStorage.removeItem("@userLogin");
-                  localStorage.removeItem("@token");
-                  localStorage.removeItem("@userCompany");
-                  localStorage.removeItem("@ompany");
+                  // localStorage.removeItem("@token");
+                  // localStorage.removeItem("@userCompany");
+                  // localStorage.removeItem("@ompany");
                   setIsLogin(false);
                 }}
               >

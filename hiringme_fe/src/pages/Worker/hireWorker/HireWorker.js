@@ -1,6 +1,22 @@
 import React from "react";
 import Navbar from "../../../components/Navbar/Navbar";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+// import Footer from "../../../components/Footer/Footer";
+import { getCompanyById } from "../../../redux/actions/ProfileCmpny";
+import { useParams } from "react-router-dom";
+
 const HireWorker = () => {
+  const dispatch = useDispatch();
+  const { data, loading, error } = useSelector((state) => state.profileCompany);
+  console.log(data, "Halo");
+  console.log(loading);
+  const { id } = useParams();
+  console.log(id, "ini id");
+
+  useEffect(() => {
+    dispatch(getCompanyById(id));
+  }, [dispatch, id]);
   return (
     <div>
       <navbar className="shadow-lg">
