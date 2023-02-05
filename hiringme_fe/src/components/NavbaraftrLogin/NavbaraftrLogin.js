@@ -1,7 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-const NavbaraftrLogin = () => {
+const NavbaraftrLogin = ({setIsLogin}) => {
+  const navigate = useNavigate();
+  useEffect(()=> {
+    if(!localStorage.getItem('@userLogin')) {
+        navigate('/')
+    }
+},[])
   return (
     <>
       <div className="navbar bg-base-100">
@@ -82,8 +90,12 @@ const NavbaraftrLogin = () => {
               <li>
                 <a>Settings</a>
               </li>
-              <li>
-                <a>Logout</a>
+              <li onClick={()=> {
+            localStorage.removeItem('@userLogin')
+            setIsLogin(false);
+            
+          }}>
+                <Link to="/">Logout</Link>
               </li>
             </ul>
           </div>
