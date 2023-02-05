@@ -91,7 +91,11 @@ const NavbaraftrLogin = ({setIsLogin}) => {
                 <a>Settings</a>
               </li>
               <li onClick={()=> {
+            localStorage.removeItem('@company')
             localStorage.removeItem('@userLogin')
+            localStorage.removeItem('@token')
+            localStorage.removeItem('@userCompany')
+            localStorage.removeItem('@ompany')
             setIsLogin(false);
             
           }}>

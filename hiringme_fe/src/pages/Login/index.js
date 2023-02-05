@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import '../../assets/css/index.css'
 import '../../assets/css/auth/auth.css'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -13,8 +12,8 @@ const Login = () => {
         password: ''
     })
     const [validate, setValidate] = useState({error: false, message: ''})
+    const [isWorker, setIsworker] = useState(false);
     const navigate = useNavigate()
-
     const handleLogin = (event)=> {
         event.preventDefault()
         axios({
@@ -22,19 +21,22 @@ const Login = () => {
             method:"POST",
             data: loginForm
         }).then((res)=> {
-            console.log(res)
-            localStorage.setItem('@userLogin', JSON.stringify(res.data.data))
-            navigate('/profileworker/:id')
+            const id = res.data.data.user.id;
+            localStorage.setItem('@userLogin', JSON.stringify(res.data.data.token));
+            if(!res.data.data.user.company == "" || undefined || null) {
+                localStorage.setItem('@company', JSON.stringify(res.data.data.user.company));
+            };
+
+            if(localStorage.getItem('@userLogin') && localStorage.getItem('@company')) {    
+                navigate(`/profilecompany/${id}`)
+            } else if(localStorage.getItem('@userLogin') && !localStorage.getItem('@company')) {
+                navigate(`/profileworker/${id}`)
+            }
         }).catch((err)=> {
             setValidate({error: true, message: err.response.data.message})
         })
     }
-    console.log(localStorage.getItem('@userLogin'))
-    useEffect(()=> {
-        if(localStorage.getItem('@userLogin')) {
-            navigate('/profileworker/:id')
-        }
-    },[])
+
   return (
       <>
         <div className='lg:flex max-h-screen lg:p-10 overflow-y-hidden'>
