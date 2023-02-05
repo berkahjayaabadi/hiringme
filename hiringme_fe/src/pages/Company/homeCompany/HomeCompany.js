@@ -73,7 +73,7 @@ const HomeCompany = () => {
           <section className="mt-10 grid grid-cols-1 gap-7 p-3 mx-[1rem] sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {data?.map((item) => (
               <div
-                key={item.id}
+                key={item.user_id}
                 className="card bg-base-100 shadow-xl  hover:cursor-pointer p-2"
                 onClick={() => navigate(`/hirecompany/${item.id}`)}
               >
