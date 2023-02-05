@@ -96,8 +96,7 @@ const authModel = {
               company_role || result.rows[0].company_role
             }', job_type='${job_type || result.rows[0].job_type}', bio='${
               bio || result.rows[0].bio
-            }', address='${address || result.rows[0].address}',
-             WHERE id='${id}'`,
+            }', address='${address || result.rows[0].address}'`,
             (err, result) => {
               if (err) {
                 return reject(err.message);

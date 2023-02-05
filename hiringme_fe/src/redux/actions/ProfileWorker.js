@@ -26,7 +26,7 @@ export const getAllProfile = () => {
     dispatch(getAllprofileRequest());
     return axios
       .get(
-        `http://localhost:5000/api/v1/profileDashboard/skill/1d4f1de3-b4bc-4987-87bd-a157f490d1f0`
+        `http://localhost:5000/api/v1/auth/users`
       )
       .then((res) => {
         dispatch(getAllProfileSuccess(res.data.data));

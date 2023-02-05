@@ -26,14 +26,14 @@ const InputFormWorker = () => {
     console.log(formEditProfile);
     const patchData = new FormData(e.target);
     patchData.append("name", formEditProfile.namalengkap);
-    patchData.append("email", formEditProfile.jobdesk);
-    patchData.append("phone", formEditProfile.domisili);
+    // patchData.append("email", formEditProfile.jobdesk);
+    // patchData.append("phone", formEditProfile.domisili);
     // patchData.append("instagram", formEditProfile.instagram);
     // patchData.append("github", formEditProfile.github);
     // patchData.append("gitlab", formEditProfile.gitlab);
     // patchData.append("deskripsi", formEditProfile.deskripsiSingkat);
 
-    dispatch(patchProfile(patchData, id));
+    dispatch(patchProfile(patchData,id));
   };
   useEffect(() => {
     dispatch(getProfileById(id));

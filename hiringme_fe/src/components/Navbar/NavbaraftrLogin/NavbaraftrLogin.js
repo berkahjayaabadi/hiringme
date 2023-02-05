@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProfile } from "../../../redux/actions/ProfileWorker";
+import { getProfileById } from "../../../redux/actions/ProfileWorker";
+import { useParams } from "react-router-dom";
 
 const NavbaraftrLogin = ({ setIsLogin }) => {
   const navigate = useNavigate();
@@ -15,9 +16,10 @@ const NavbaraftrLogin = ({ setIsLogin }) => {
   const { data, loading, error } = useSelector((state) => state.profileWorkers);
   console.log(data);
   const dispatch = useDispatch();
+  const { id } = useParams();
   useEffect(() => {
-    dispatch(getAllProfile());
-  }, []);
+    dispatch(getProfileById(id));
+  }, [dispatch, id]);
   return (
     <>
       <div className="navbar bg-base-100">
@@ -91,12 +93,10 @@ const NavbaraftrLogin = ({ setIsLogin }) => {
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-              {data?.map((item) => (
-                <li onClick={() => navigate(`/editprofilework/${item.id}`)}>
-                  Profile
-                  <span className="badge">New</span>
-                </li>
-              )) ??<div>Home</div>}
+              <li onClick={() => navigate(`/editprofilework/${id}`)}>
+                Profile
+                <span className="badge">New</span>
+              </li>
               <li>
                 <a>Settings</a>
               </li>
