@@ -6,7 +6,17 @@ import Portofolio from "../../../components/poftofolio";
 import Experience from "../../../components/workExperience";
 
 const ProfileWorker = () => {
+  const { id } = useParams();
+  console.log(id);
   const [isToggled, setIsToggled] = useState(false);
+  const { data, loading, error } = useSelector((state) => state.profileWorkers);
+  const navigate = useNavigate();
+  // console.log(data)
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProfileById(id));
+  }, [dispatch, id]);
   return (
     <>
       <Navbar />

@@ -64,7 +64,7 @@ export const getProfileById = (id) => {
   return (dispatch) => {
     dispatch(getProfileByIdRequest(id));
     return axios
-      .get(`http://localhost:5000/api/v1/auth/users/${id}`)
+      .get(`http://localhost:5000/api/v1/auth/user/${id}`)
       .then((res) => {
         dispatch(getProfileByIdSuccess(res.data.data));
       })
