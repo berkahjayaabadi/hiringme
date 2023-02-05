@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const Login = () => {
+
     const [loginForm, setLoginForm] = useState({
         email: '',
         password: ''
@@ -17,11 +18,11 @@ const Login = () => {
     const handleLogin = (event)=> {
         event.preventDefault()
         axios({
-            url: 'http://localhost:5000/v1/auth/login',
+            url: 'http://localhost:5000/api/v1/auth/login',
             method:"POST",
             data: loginForm
         }).then((res)=> {
-            console.log(res.data.data)
+            console.log(res)
             localStorage.setItem('@userLogin', JSON.stringify(res.data.data))
             navigate('/profileworker/:id')
         }).catch((err)=> {
