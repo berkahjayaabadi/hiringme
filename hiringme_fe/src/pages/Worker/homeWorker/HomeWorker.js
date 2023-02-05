@@ -4,12 +4,14 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../../components/Footer/Footer";
 import { getAllCompany } from "../../../redux/actions/ProfileCmpny";
+import { useNavigate } from "react-router-dom";
 
 const HomeWorker = () => {
   const { data, loading, error } = useSelector((state) => state.profileCompany);
   console.log(data, "Halo");
   console.log(loading);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(getAllCompany());
   }, []);
@@ -67,18 +69,19 @@ const HomeWorker = () => {
             <div
               key={item.id}
               className="card bg-base-100 shadow-xl  hover:cursor-pointer p-2"
+              onClick={() => navigate(`/hireworker/${item.id}`)}
             >
               <figure>
                 <img
                   className="h-28 w-28 shadow-xl mr-20 p-2"
-                  src={item.avatar}
+                  src=""
                   alt="Shoes"
                 />
               </figure>
               <div className="card-body p-2">
                 <h2 className="card-title">{item.name}</h2>
-                <p>{item.job_type}</p>
-                <p>🏠 {item.address}</p>
+                <p>{item.email}</p>
+                <p>🏠 </p>
                 <div className="flex flex-row justify-end px-4">
                   <h1 className="bg-primary rounded-lg  text-sm">
                     More Information ▷▷▷
