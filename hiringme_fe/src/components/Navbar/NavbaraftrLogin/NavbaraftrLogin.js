@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getProfileById } from "../../../redux/actions/ProfileWorker";
+import { getAllProfile } from "../../../redux/actions/ProfileWorker";
 import { useParams } from "react-router-dom";
 
 const NavbaraftrLogin = ({ setIsLogin }) => {

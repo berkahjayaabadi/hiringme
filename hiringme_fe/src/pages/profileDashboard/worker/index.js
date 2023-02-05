@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "../../../components/Footer/Footer";
 import Navbar from "../../../components/Navbar/Navbar";
 import { Link } from "react-router-dom";
 import Portofolio from "../../../components/poftofolio";
 import Experience from "../../../components/workExperience";
 
+import { useDispatch, useSelector } from "react-redux";
+// import Footer from "../../../components/Footer/Footer";
+import { getProfileById } from "../../../redux/actions/ProfileWorker";
+import { useParams } from "react-router-dom";
+
 const ProfileWorker = () => {
   const { id } = useParams();
   console.log(id);
   const [isToggled, setIsToggled] = useState(false);
   const { data, loading, error } = useSelector((state) => state.profileWorkers);
-  const navigate = useNavigate();
-  // console.log(data)
+  // const navigate = useNavigate();
+  console.log(data, "hallo");
 
   const dispatch = useDispatch();
   useEffect(() => {
