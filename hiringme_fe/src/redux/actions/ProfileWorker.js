@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 const getAllprofileRequest = () => {
   return {
@@ -33,6 +33,43 @@ export const getAllProfile = () => {
       })
       .catch((err) => {
         dispatch(getAllProfileFail(err.response.data));
+      });
+  };
+};
+
+//GET BY ID
+
+const getProfileByIdRequest = (id) => {
+  return {
+    type: "GET_DATA_PROFILE_BY_ID_REQUEST",
+    payload: id,
+  };
+};
+
+const getProfileByIdSuccess = (data) => {
+  return {
+    type: "GET_DATA_PROFILE_BY_ID_SUCCESS",
+    payload: data,
+  };
+};
+
+const getProfileByIdFail = (err) => {
+  return {
+    type: "GET_DATA_PROFILE_BY_ID_FAIL",
+    payload: err,
+  };
+};
+
+export const getProfileById = (id) => {
+  return (dispatch) => {
+    dispatch(getProfileByIdRequest(id));
+    return axios
+      .get(`http://localhost:5000/api/v1/profileDashboard/skill/${id}`)
+      .then((res) => {
+        dispatch(getProfileByIdSuccess(res.data));
+      })
+      .catch((err) => {
+        dispatch(getProfileByIdFail(err.response.data));
       });
   };
 };
