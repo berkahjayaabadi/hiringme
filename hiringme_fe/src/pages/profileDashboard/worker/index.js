@@ -23,19 +23,8 @@ const ProfileWorker = () => {
     dispatch(getProfileById(id));
   }, [dispatch, id]);
   return (
-<<<<<<< HEAD
-    
-    <> 
-    <div>
-      {data ?? data.map((item) => {
-        <div>{item}</div>
-      })}
-    </div>
-        <NavbaraftrLogin />
-=======
     <>  
         <Navbar />
->>>>>>> 3f280333f7c6dc8223886d52c7a24b9e68de2d71
         <div className='bg-secondary w-full h-[30vh] hidden lg:block'></div>
         <div className='lg:flex lg:-mt-40 lg:mx-20'>
           <div className='bg-secondary text-center w-full lg:text-start px-5 pb-20 text-white pt-1 lg:flex-1 lg:mx-10 lg:bg-white lg:rounded-lg lg:px-10'>
