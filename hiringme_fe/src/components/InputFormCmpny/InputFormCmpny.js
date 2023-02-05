@@ -1,6 +1,34 @@
 import React from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const InputFormCmpny = () => {
+  const [data, setData] = React.useState([]);
+
+  // const filteredData = data.filter((item) => item.category === props.category);
+  // const filteredData =
+  //   props.category === "all"
+  //     ? data
+  //     : data.filter((item) => item.category === props.category);
+
+  const navigate = useNavigate();
+  React.useEffect(() => {
+    axios
+      .all([
+        axios.get("http://localhost:5000/api/v1//profileDashboard/skill"),
+        axios.get("http://localhost:5000/api/v1/profileDashboard/socmed"),
+      ])
+      .then(
+        axios.spread((skillResponse, socmedResponse) => {
+          setData(skillResponse.data.data);
+          console.log(skillResponse.data.data);
+          console.log(socmedResponse.data.data);
+        })
+      )
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <section className="container flex-12 shadow-xxl p-7 max-[375px]:w-[19rem] max-[465px]:w-[25rem] sm:w-[35rem] md:w-[40rem] lg:w-[45rem] bg-white rounded-lg">
       <h1 className="text-xl font-bold pb-1">Data Diri</h1>
