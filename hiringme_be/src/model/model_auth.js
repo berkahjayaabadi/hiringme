@@ -45,6 +45,19 @@ const authModel = {
       );
     });
   },
+
+  get: function (queryParams) {
+    console.log(queryParams);
+    return new Promise((resolve, reject) => {
+      db.query(`SELECT * FROM users`, (err, result) => {
+        if (err) {
+          return reject(err.message);
+        } else {
+          return resolve(result.rows);
+        }
+      });
+    });
+  },
 };
 
 module.exports = authModel;
