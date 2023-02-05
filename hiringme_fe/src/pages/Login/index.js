@@ -2,8 +2,38 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import '../../assets/css/index.css'
 import '../../assets/css/auth/auth.css'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const Login = () => {
+    const [loginForm, setLoginForm] = useState({
+        email: '',
+        password: ''
+    })
+    const [validate, setValidate] = useState({error: false, message: ''})
+    const navigate = useNavigate()
+
+    const handleLogin = (event)=> {
+        event.preventDefault()
+        axios({
+            url: 'http://localhost:5000/v1/auth/login',
+            method:"POST",
+            data: loginForm
+        }).then((res)=> {
+            console.log(res.data.data)
+            localStorage.setItem('@userLogin', JSON.stringify(res.data.data))
+            navigate('/profileworker/:id')
+        }).catch((err)=> {
+            setValidate({error: true, message: err.response.data.message})
+        })
+    }
+    console.log(localStorage.getItem('@userLogin'))
+    useEffect(()=> {
+        if(localStorage.getItem('@userLogin')) {
+            navigate('/profileworker/:id')
+        }
+    },[])
   return (
       <>
         <div className='lg:flex max-h-screen lg:p-10 overflow-y-hidden'>
@@ -24,16 +54,22 @@ const Login = () => {
                 <h2 className='text-lg font-bold md:text-center lg:text-header lg:text-xl lg:text-start'>Helo, Pewpeople</h2>
                 <p className='mb-5 mt-3 md:text-center lg:text-text lg:text-start'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
 
-                <form className='md:flex md:flex-col md:w-3/4 md:mx-auto lg:w-full'>
-                    <label for="email" className='lg:text-pale lg:text-sm'>
+                <form onSubmit={handleLogin} className='md:flex md:flex-col md:w-3/4 md:mx-auto lg:w-full'>
+                    <label htmlFor='email' className='lg:text-pale lg:text-sm'>
                         Email
                     </label>
-                    <input className='block w-full h-10 mt-2 rounded-sm p-2 mb-4 lg:border lg:border-placeholder text-header text-header' type="email" placeholder='Masukan alamat email'/>
+                    <input onChange={(e)=> setLoginForm({
+                              ...loginForm,
+                            email: e.target.value
+          })} className='block w-full h-10 mt-2 rounded-sm p-2 mb-4 lg:border lg:border-placeholder text-header' type="email" placeholder='Masukan alamat email'/>
 
-                    <label for="password"  className='lg:text-pale lg:text-sm'>
+                    <label htmlFor="password"  className='lg:text-pale lg:text-sm'>
                     Kata sandi
                     </label>
-                    <input className='block w-full h-10 mt-2 rounded-s p-2 mb-5 lg:border lg:border-placeholder text-header' type="password" placeholder='Masuk kata sandi'/>
+                    <input onChange={(e)=> setLoginForm({
+                                ...loginForm,
+                                password: e.target.value
+          })} className='block w-full h-10 mt-2 rounded-s p-2 mb-5 lg:border lg:border-placeholder text-header' type="password" placeholder='Masuk kata sandi'/>
 
 
                     <button type='submit' className='mb-4 mt-5 w-full px-4 py-2 rounded-sm block bg-primary font-semibold'>Masuk</button>
