@@ -1,14 +1,35 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Footer from '../../../components/Footer/Footer'
 import NavbaraftrLogin from '../../../components/NavbaraftrLogin/NavbaraftrLogin'
 import { Link } from 'react-router-dom'
 import Portofolio from '../../../components/poftofolio'
 import Experience from '../../../components/workExperience'
+import { getProfileById } from '../../../redux/actions/ProfileWorker'
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+
 
 const ProfileWorker = () => {
+  const {id} = useParams();
+  console.log(id)
   const [isToggled, setIsToggled]= useState(false)
+  const { data, loading, error } = useSelector((state) => state.profileWorkers);
+  const navigate = useNavigate();
+  // console.log(data)
+ 
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProfileById(id));
+  }, [dispatch, id]);
   return (
-    <>  
+    
+    <> 
+    <div>
+      {data ?? data.map((item) => {
+        <div>{item}</div>
+      })}
+    </div>
         <NavbaraftrLogin />
         <div className='bg-secondary w-full h-[30vh] hidden lg:block'></div>
         <div className='lg:flex lg:-mt-40 lg:mx-20'>
