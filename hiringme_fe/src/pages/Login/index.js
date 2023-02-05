@@ -21,6 +21,7 @@ const Login = () => {
             method:"POST",
             data: loginForm
         }).then((res)=> {
+            console.log(res.data.data)
             const id = res.data.data.user.id;
             localStorage.setItem('@userLogin', JSON.stringify(res.data.data.token));
             if(!res.data.data.user.company == "" || undefined || null) {

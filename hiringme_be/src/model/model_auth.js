@@ -58,6 +58,69 @@ const authModel = {
       });
     });
   },
+  getDetail: (id) => {
+    return new Promise((resolve, reject) => {
+      db.query(`SELECT * from users WHERE id='${id}'`, (err, result) => {
+        if (err) {
+          return reject(err.message);
+        } else {
+          return resolve(result.rows[0]);
+        }
+      });
+    });
+  },
+
+  update: ({
+    id,
+    name,
+    email,
+    phone,
+    password,
+    company,
+    company_role,
+    job_type,
+    bio,
+    address,
+  }) => {
+    return new Promise((resolve, reject) => {
+      db.query(`SELECT * FROM users WHERE id='${id}'`, (err, result) => {
+        if (err) {
+          return reject(err.message);
+        } else {
+          db.query(
+            `UPDATE users SET name='${name || result.rows[0].name}', email='${
+              email || result.rows[0].email
+            }', phone='${phone || result.rows[0].phone}', password='${
+              password || result.rows[0].password
+            }', company='${company || result.rows[0].company}', company_role='${
+              company_role || result.rows[0].company_role
+            }', job_type='${job_type || result.rows[0].job_type}', bio='${
+              bio || result.rows[0].bio
+            }', address='${address || result.rows[0].address}',
+             WHERE id='${id}'`,
+            (err, result) => {
+              if (err) {
+                return reject(err.message);
+              } else {
+                return resolve({
+                  id,
+                  name,
+                  email,
+                  phone,
+                  password,
+                  company,
+                  company_role,
+                  job_type,
+                  bio,
+                  address,
+                });
+              }
+            }
+          );
+        }
+      });
+    });
+  },
 };
 
 module.exports = authModel;

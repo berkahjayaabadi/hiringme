@@ -1,11 +1,10 @@
 import React from "react";
-import NavbaraftrLogin from "../../../components/NavbaraftrLogin/NavbaraftrLogin";
-
+import Navbar from "../../../components/Navbar/Navbar";
 const HireWorker = () => {
   return (
     <div>
       <navbar className="shadow-lg">
-        <NavbaraftrLogin />
+        <Navbar />
       </navbar>
       <main className="container max-w-5xl mx-auto flex min-[320px]:flex-col md:flex-row lg:flex-row sm:flex-col mt-6 ">
         <section className="md:basis-[30%] lg:basis-[30%] sm:basis-0 min-[320px]:basis-0">
