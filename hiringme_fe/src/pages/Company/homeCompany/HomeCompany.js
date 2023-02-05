@@ -1,5 +1,5 @@
 import React from "react";
-import NavbaraftrLogin from "../../../components/NavbaraftrLogin/NavbaraftrLogin";
+import Navbar from "../../../components/Navbar/Navbar";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../../components/Footer/Footer";
@@ -23,7 +23,7 @@ const HomeCompany = () => {
   return (
     <>
       <div>
-        <NavbaraftrLogin />
+        <Navbar />
         <header className="bg-secondary ">
           <section className="container max-w-5xl mx-auto">
             <h1 className="text-white font-extrabold text-start text-xl p-6">

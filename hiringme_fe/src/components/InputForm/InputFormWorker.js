@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { patchProfile } from "../../redux/actions/ProfileWorker";
+import { useParams } from "react-router-dom";
+import { getProfileById } from "../../redux/actions/ProfileWorker";
 
 const InputFormWorker = () => {
-  const { data, loading, error } = useSelector(
-    (state) => state.patchProfileWorkers
-  );
+  const { data, error } = useSelector((state) => state.patchProfileWorkers);
+  console.log(data);
 
   const [formEditProfile, setformEditProfile] = useState({
     namalengkap: "",
@@ -16,21 +17,27 @@ const InputFormWorker = () => {
     gitlab: "",
     deskripsiSingkat: "",
   });
+  console.log(data);
   const dispatch = useDispatch();
+  const { id } = useParams();
+
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(formEditProfile);
     const patchData = new FormData(e.target);
     patchData.append("name", formEditProfile.namalengkap);
-    patchData.append("jobdesk", formEditProfile.jobdesk);
-    patchData.append("domisili", formEditProfile.domisili);
-    patchData.append("instagram", formEditProfile.instagram);
-    patchData.append("github", formEditProfile.github);
-    patchData.append("gitlab", formEditProfile.gitlab);
-    patchData.append("deskripsi", formEditProfile.deskripsiSingkat);
+    patchData.append("email", formEditProfile.jobdesk);
+    patchData.append("phone", formEditProfile.domisili);
+    // patchData.append("instagram", formEditProfile.instagram);
+    // patchData.append("github", formEditProfile.github);
+    // patchData.append("gitlab", formEditProfile.gitlab);
+    // patchData.append("deskripsi", formEditProfile.deskripsiSingkat);
 
-    dispatch(patchProfile(patchData));
+    dispatch(patchProfile(patchData, id));
   };
+  useEffect(() => {
+    dispatch(getProfileById(id));
+  }, [dispatch, id]);
 
   return (
     <>

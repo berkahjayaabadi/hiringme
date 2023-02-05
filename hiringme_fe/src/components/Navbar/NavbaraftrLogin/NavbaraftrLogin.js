@@ -2,14 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProfile } from "../../../redux/actions/ProfileWorker";
 
-const NavbaraftrLogin = ({setIsLogin}) => {
+const NavbaraftrLogin = ({ setIsLogin }) => {
   const navigate = useNavigate();
-  useEffect(()=> {
-    if(!localStorage.getItem('@userLogin')) {
-        navigate('/')
+  useEffect(() => {
+    if (!localStorage.getItem("@userLogin")) {
+      navigate("/");
     }
-},[])
+  }, []);
+  const { data, loading, error } = useSelector((state) => state.profileWorkers);
+  console.log(data);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllProfile());
+  }, []);
   return (
     <>
       <div className="navbar bg-base-100">
@@ -22,7 +30,7 @@ const NavbaraftrLogin = ({setIsLogin}) => {
               <div className="indicator">
                 <img
                   className="w-[1.8rem] h-[1.8rem]"
-                  src={require("../../assets/images/icon/bell.png")}
+                  src={require("../../../assets/images/icon/bell.png")}
                 />
                 <span className="badge badge-sm indicator-item">1</span>
               </div>
@@ -34,7 +42,9 @@ const NavbaraftrLogin = ({setIsLogin}) => {
               <div className="card-body">
                 <span className="font-bold text-lg">1 Notification</span>
                 <span className="text-info">From : Admin</span>
-                <img src={require('../../assets/images/chat/Chat.png')}></img>
+                <img
+                  src={require("../../../assets/images/chat/Chat.png")}
+                ></img>
                 <div className="card-actions">
                   <button className="btn btn-primary btn-block">
                     View Notification
@@ -73,7 +83,7 @@ const NavbaraftrLogin = ({setIsLogin}) => {
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
                 <img
-                  src={require("../../assets/images/christopher-campbell.jpg")}
+                  src={require("../../../assets/images/christopher-campbell.jpg")}
                 />
               </div>
             </label>
@@ -81,24 +91,25 @@ const NavbaraftrLogin = ({setIsLogin}) => {
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <li>
-                <Link to="/editprofilework" className="justify-between">
+              {data?.map((item) => (
+                <li onClick={() => navigate(`/editprofilework/${item.id}`)}>
                   Profile
                   <span className="badge">New</span>
-                </Link>
-              </li>
+                </li>
+              )) ??<div>Home</div>}
               <li>
                 <a>Settings</a>
               </li>
-              <li onClick={()=> {
-            localStorage.removeItem('@company')
-            localStorage.removeItem('@userLogin')
-            localStorage.removeItem('@token')
-            localStorage.removeItem('@userCompany')
-            localStorage.removeItem('@ompany')
-            setIsLogin(false);
-            
-          }}>
+              <li
+                onClick={() => {
+                  localStorage.removeItem("@company");
+                  localStorage.removeItem("@userLogin");
+                  localStorage.removeItem("@token");
+                  localStorage.removeItem("@userCompany");
+                  localStorage.removeItem("@ompany");
+                  setIsLogin(false);
+                }}
+              >
                 <Link to="/">Logout</Link>
               </li>
             </ul>
