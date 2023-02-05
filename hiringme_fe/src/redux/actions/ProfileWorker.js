@@ -105,3 +105,35 @@ export const postProfile = (postData) => {
       });
   };
 };
+
+// Patch By Id
+
+const patchProfileSuccess = (data) => {
+  return {
+    type: "PATCH_ALL_DATA_PROFILE_SUCCESS",
+    payload: data,
+  };
+};
+
+const patchProfileFail = (err) => {
+  return {
+    type: "PATCH_ALL_DATA_PROFILE_FAIL",
+    payload: err,
+  };
+};
+
+export const patchProfile = (patchData,id) => {
+  return (dispatch) => {
+    return axios({
+      method: "PATCH",
+      url: `http://localhost:5000/api/v1/profileDashboard/skill/1d4f1de3-b4bc-4987-87bd-a157f490d1f0`,
+      data: patchData,
+    })
+      .then((res) => {
+        dispatch(patchProfileSuccess(res.data.data));
+      })
+      .catch((err) => {
+        dispatch(patchProfileFail(err.response.data));
+      });
+  };
+};

@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { postProfile } from "../../redux/actions/ProfileWorker";
-
+import { patchProfile } from "../../redux/actions/ProfileWorker";
 
 const InputFormWorker = () => {
   const { data, loading, error } = useSelector(
-    (state) => state.postProfileWorkers
+    (state) => state.patchProfileWorkers
   );
-  
-  
 
   const [formEditProfile, setformEditProfile] = useState({
     namalengkap: "",
@@ -22,11 +19,17 @@ const InputFormWorker = () => {
   const dispatch = useDispatch();
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(formEditProfile.namalengkap);
-    const postData = new FormData(e.target);
-    postData.append("name", formEditProfile.namalengkap);
+    console.log(formEditProfile);
+    const patchData = new FormData(e.target);
+    patchData.append("name", formEditProfile.namalengkap);
+    patchData.append("jobdesk", formEditProfile.jobdesk);
+    patchData.append("domisili", formEditProfile.domisili);
+    patchData.append("instagram", formEditProfile.instagram);
+    patchData.append("github", formEditProfile.github);
+    patchData.append("gitlab", formEditProfile.gitlab);
+    patchData.append("deskripsi", formEditProfile.deskripsiSingkat);
 
-    dispatch(postProfile(postData));
+    dispatch(patchProfile(patchData));
   };
 
   return (
@@ -60,6 +63,12 @@ const InputFormWorker = () => {
               type="text"
               placeholder="Type here"
               className="input input-bordered w-full"
+              onChange={(e) =>
+                setformEditProfile({
+                  ...formEditProfile,
+                  jobdesk: e.target.value,
+                })
+              }
             />
           </div>
           <div className="form-control w-full pt-8">
@@ -70,6 +79,12 @@ const InputFormWorker = () => {
               type="text"
               placeholder="Type here"
               className="input input-bordered w-full"
+              onChange={(e) =>
+                setformEditProfile({
+                  ...formEditProfile,
+                  domisili: e.target.value,
+                })
+              }
             />
           </div>
           <div className="flex max-[765px]:flex-wrap pt-8 gap-5">
@@ -81,6 +96,12 @@ const InputFormWorker = () => {
                 type="text"
                 placeholder="Type here"
                 className="input input-bordered w-full max-w-xs"
+                onChange={(e) =>
+                  setformEditProfile({
+                    ...formEditProfile,
+                    instagram: e.target.value,
+                  })
+                }
               />
             </div>
             <div className="form-control w-full max-w-xs">
@@ -91,6 +112,12 @@ const InputFormWorker = () => {
                 type="text"
                 placeholder="Type here"
                 className="input input-bordered w-full max-w-xs"
+                onChange={(e) =>
+                  setformEditProfile({
+                    ...formEditProfile,
+                    github: e.target.value,
+                  })
+                }
               />
             </div>
             <div className="form-control w-full max-w-xs">
@@ -101,15 +128,27 @@ const InputFormWorker = () => {
                 type="text"
                 placeholder="Type here"
                 className="input input-bordered w-full max-w-xs"
+                onChange={(e) =>
+                  setformEditProfile({
+                    ...formEditProfile,
+                    gitlab: e.target.value,
+                  })
+                }
               />
             </div>
           </div>
           <label className="label pt-8">
             <span className="label-text">Deskripsi Singkat</span>
           </label>
-          <textarea
+          <input
             type="text"
             class="input input-bordered w-full p-4 outline-pale h-20"
+            onChange={(e) =>
+              setformEditProfile({
+                ...formEditProfile,
+                deskripsiSingkat: e.target.value,
+              })
+            }
           />
           <button type="submit" className="btn btn-warning mt-8">
             Simpan
