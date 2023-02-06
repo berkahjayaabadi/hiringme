@@ -30,7 +30,7 @@ const ProfileCompany = () => {
                 <p className='text-pale mt-2'>Financial</p>
                 <p className='text-pale mt-2'>purwokerto, Jawa tengah</p>
                 <p className='mt-2 mb-10 text-pale lg:px-52'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.</p>
-                <Link className='px-10 py-4 mt-10 rounded-md lg:border-2 border-secondary text-white hover:bg-white hover:text-secondary ease-in-out duration-300 font-semibold bg-secondary' to="/editprofilecompany">Edit Profile</Link>
+                <Link className='px-10 py-4 mt-10 rounded-md lg:border-2 border-secondary text-white hover:bg-white hover:text-secondary ease-in-out duration-300 font-semibold bg-secondary' to={`/editprofilecompany/${id}`}>Edit Profile</Link>
                 <div id="social-media" className='flex flex-col mb-10 content-center justify-center b-10 mt-10 text-pale'>
                     <a className='px-2 mb-1 bg-none lg:block' href=''>Email</a>
                     <a className='px-2 mb-1 bg-none lg:block' href=''>Instagram</a>

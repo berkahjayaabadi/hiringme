@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
+import { useEffect } from 'react';
 
 const RegistCompany = () => {
     const [registForm, setRegistForm] = useState({
@@ -29,6 +30,14 @@ const RegistCompany = () => {
             setValidate({error: true, message: err.response})
         })
     }
+    const id = localStorage.getItem('@id');
+    useEffect(()=> {
+        if(localStorage.getItem('@userLogin') && localStorage.getItem('@company')) {    
+            navigate(`/profilecompany/${id}`)
+        } else if(localStorage.getItem('@userLogin') && !localStorage.getItem('@company')) {
+            navigate(`/profileworker/${id}`)
+        }
+    },[])
   return (
     <>
         <div className='lg:flex h-[130vh] lg:p-10'>
