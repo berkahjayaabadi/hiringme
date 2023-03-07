@@ -11,17 +11,31 @@ import { getProfileById } from "../../../redux/actions/ProfileWorker";
 import { useParams } from "react-router-dom";
 
 const ProfileWorker = () => {
-  const { id } = useParams();
-  console.log(id);
-  const [isToggled, setIsToggled] = useState(false);
-  const { data, loading, error } = useSelector((state) => state.profileWorkers);
-  // const navigate = useNavigate();
-  console.log(data, "hallo");
-
   const dispatch = useDispatch();
+
+  const { data, loading, error } = useSelector((state) => state.profileWorkers);
+  console.log(data, "Halo");
+  console.log(loading, "Loading");
+  console.log(error, "Error");
+  // console.log(loading);
+  const { id } = useParams();
+  console.log(id, "ini id");
+
   useEffect(() => {
     dispatch(getProfileById(id));
   }, [dispatch, id]);
+
+  // const { id } = useParams();
+  // console.log(id);
+  const [isToggled, setIsToggled] = useState(false);
+  // const { data, loading, error } = useSelector((state) => state.profileWorkers);
+  // // const navigate = useNavigate();
+  // console.log(data, "hallo");
+
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getProfileById(id));
+  // }, [dispatch, id]);
   return (
     <>
       <Navbar />
