@@ -9,7 +9,6 @@ const authModel = {
       db.query(`SELECT * FROM users WHERE email=$1`, [email], (err, result) => {
         if (err) return reject(err.message);
         if (result.rows.length == 0) return reject("email/password salah.");
-
         bcrypt.compare(
           password,
           result.rows[0].password,
@@ -96,8 +95,9 @@ const authModel = {
               company_role || result.rows[0].company_role
             }', job_type='${job_type || result.rows[0].job_type}', bio='${
               bio || result.rows[0].bio
-            }', address='${address || result.rows[0].address}'
-             WHERE id='${id}'`,
+            }', address='${
+              address || result.rows[0].address
+            }'WHERE id='${id}'`,
             (err, result) => {
               if (err) {
                 return reject(err.message);

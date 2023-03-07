@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Footer from "../../../components/Footer/Footer";
 import Navbar from "../../../components/Navbar/Navbar";
-import { Link } from "react-router-dom";
+import { Link,useParams,useNavigate } from "react-router-dom";
 import Portofolio from "../../../components/poftofolio";
 import Experience from "../../../components/workExperience";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { getProfileById } from "../../../redux/actions/ProfileWorker";
 
 const ProfileWorker = () => {
   const { id } = useParams();

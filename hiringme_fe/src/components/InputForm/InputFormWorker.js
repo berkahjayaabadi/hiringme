@@ -6,7 +6,8 @@ import { getProfileById } from "../../redux/actions/ProfileWorker";
 
 const InputFormWorker = () => {
   const { data, error } = useSelector((state) => state.patchProfileWorkers);
-  console.log(data);
+  console.log(data, "ini data");
+  // console.log(error)
 
   const [formEditProfile, setformEditProfile] = useState({
     namalengkap: "",
@@ -17,13 +18,13 @@ const InputFormWorker = () => {
     gitlab: "",
     deskripsiSingkat: "",
   });
-  console.log(data);
+  // console.log(formEditProfile);
   const dispatch = useDispatch();
   const { id } = useParams();
   console.log(id, "ini id");
   const onSubmit = (e) => {
-    e.preventDefault();
     console.log(formEditProfile);
+    e.preventDefault();
     const patchData = new FormData(e.target);
     patchData.append("name", formEditProfile.namalengkap);
     // patchData.append("email", formEditProfile.jobdesk);
@@ -33,7 +34,7 @@ const InputFormWorker = () => {
     // patchData.append("gitlab", formEditProfile.gitlab);
     // patchData.append("deskripsi", formEditProfile.deskripsiSingkat);
 
-    dispatch(patchProfile(patchData,id));
+    dispatch(patchProfile(patchData, id));
   };
   useEffect(() => {
     dispatch(getProfileById(id));

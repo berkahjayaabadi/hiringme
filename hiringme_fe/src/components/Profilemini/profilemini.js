@@ -1,21 +1,41 @@
+import React, { useState, useEffect } from "react";
+
 const Profilemini = () => {
-  
+  const [images, setImage] = useState("");
+  const [imagePrev, setImagePrev] = useState(null);
+
+  const onImageUpload = (e) => {
+    const file = e.target.files[0];
+    setImagePrev(URL.createObjectURL(file));
+    setImage(file);
+    console.log(file);
+  };
   return (
     <>
       <div className="card bg-base-100 shadow-xl max-[375px]:w-[19rem] max-[465px]:w-[25rem] sm:w-[28rem]">
         <form>
           <figure className="p-10 flex-col gap-2">
-            <img
-              src={require("../../assets/images/christopher-campbell.jpg")}
-              alt="Shoes"
-              className="rounded-full w-[10rem] h-[10rem]"
-            />
-
+            {imagePrev ? (
+              imagePrev && (
+                <img
+                  src={imagePrev}
+                  alt="Shoes"
+                  className="rounded-full w-[10rem] h-[10rem]"
+                />
+              )
+            ) : (
+              <img
+                src={require("../../assets/img/default.png")}
+                alt="Shoes"
+                className="rounded-full w-[10rem] h-[10rem]"
+              />
+            )}
             <label className="block">
-              <span className="sr-only">Halo</span>
               <input
                 type="file"
                 className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-white file:text-pale hover:file:font-bold"
+                onChange={(e) => onImageUpload(e)}
+                img={imagePrev}
               />
             </label>
           </figure>

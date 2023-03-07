@@ -13,12 +13,15 @@ const NavbaraftrLogin = ({ setIsLogin }) => {
       navigate("/");
     }
   }, []);
+
   const { data, loading, error } = useSelector((state) => state.profileWorkers);
   console.log(data);
+
   const dispatch = useDispatch();
+  const { id } = useParams();
   useEffect(() => {
-    dispatch(getAllProfile());
-  }, []);
+    dispatch(getProfileById(id));
+  }, [dispatch, id]);
   return (
     <>
       <div className="navbar bg-base-100">
@@ -92,12 +95,10 @@ const NavbaraftrLogin = ({ setIsLogin }) => {
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-              {data?.map((item) => (
-                <li onClick={() => navigate(`/editprofilework/${item.id}`)}>
-                  Profile
-                  <span className="badge">New</span>
-                </li>
-              )) ?? <div>Home</div>}
+              <li onClick={() => navigate(`/editprofilework/${id}`)}>
+                Profile
+                <span className="badge">New</span>
+              </li>
               <li>
                 <a>Settings</a>
               </li>
@@ -105,9 +106,9 @@ const NavbaraftrLogin = ({ setIsLogin }) => {
                 onClick={() => {
                   localStorage.removeItem("@company");
                   localStorage.removeItem("@userLogin");
-                  // localStorage.removeItem("@token");
-                  // localStorage.removeItem("@userCompany");
-                  // localStorage.removeItem("@ompany");
+                  localStorage.removeItem("@token");
+                  localStorage.removeItem("@userCompany");
+                  localStorage.removeItem("@ompany");
                   setIsLogin(false);
                 }}
               >
