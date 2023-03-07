@@ -106,22 +106,12 @@ const NavbaraftrLogin = ({ setIsLogin }) => {
                 onClick={() => {
                   localStorage.removeItem("@company");
                   localStorage.removeItem("@userLogin");
-<<<<<<< HEAD
                   localStorage.removeItem("@token");
                   localStorage.removeItem("@userCompany");
-                  localStorage.removeItem("@ompany");
-=======
-<<<<<<< HEAD
-                  localStorage.removeItem("@token");
-                  localStorage.removeItem("@userCompany");
-                  localStorage.removeItem("@ompany");
-=======
                   localStorage.removeItem("@id");
                   // localStorage.removeItem("@token");
                   // localStorage.removeItem("@userCompany");
                   // localStorage.removeItem("@ompany");
->>>>>>> ca6fb8a9e189b277bd83775359d0b3c5dc75d67c
->>>>>>> c2f2b7d035cb30170467122c0b06c38766eec8e6
                   setIsLogin(false);
                 }}
               >
