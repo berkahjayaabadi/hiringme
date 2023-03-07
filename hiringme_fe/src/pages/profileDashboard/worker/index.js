@@ -14,12 +14,8 @@ const ProfileWorker = () => {
   const dispatch = useDispatch();
 
   const { data, loading, error } = useSelector((state) => state.profileWorkers);
-  console.log(data, "Halo");
-  console.log(loading, "Loading");
-  console.log(error, "Error");
-  // console.log(loading);
-  const { id } = useParams();
-  console.log(id, "ini id");
+  // const navigate = useNavigate();
+  console.log(data, "hallo");
 
   useEffect(() => {
     dispatch(getProfileById(id));
@@ -141,7 +137,7 @@ const ProfileWorker = () => {
           <div>{isToggled ? <Experience /> : <Portofolio />}</div>
           <Link
             className="flex content-center mx-20 justify-center text-center py-3 border-4 border-indigo-900 bg-white text-secondary hover:text-white hover:bg-secondary font-semibold rounded-md lg:mt-20"
-            to="/editprofilework"
+            to={`/editprofilework/${id}`}
           >
             Edit Profile
           </Link>

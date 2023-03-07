@@ -23,6 +23,7 @@ const RegistWorker = () => {
       method: "POST",
       data: registForm,
     })
+<<<<<<< HEAD
       .then((res) => {
         console.log(res.data.data);
         console.log(res.data.message);
@@ -44,6 +45,23 @@ const RegistWorker = () => {
       !localStorage.getItem("@company")
     ) {
       navigate(`/profileworker/${id}`);
+=======
+    const [validate, setValidate] = useState({error: false, message: ''})
+    const navigate = useNavigate()
+    const handleRegist = (event)=> {
+        event.preventDefault()
+        axios({
+            url: 'http://localhost:5000/api/v1/auth/register',
+            method:"POST",
+            data: registForm
+        }).then((res)=> {
+            console.log(res.data.data);
+            console.log(res.data.message);
+                navigate(`/login`)
+        }).catch((err)=> {
+            setValidate({error: true, message: err.response.data.message})
+        })
+>>>>>>> ca6fb8a9e189b277bd83775359d0b3c5dc75d67c
     }
   }, []);
   return (

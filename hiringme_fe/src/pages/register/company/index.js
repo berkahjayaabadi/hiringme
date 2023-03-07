@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
+=======
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios';
+import { useEffect } from 'react';
+>>>>>>> ca6fb8a9e189b277bd83775359d0b3c5dc75d67c
 
 const RegistCompany = () => {
   const [registForm, setRegistForm] = useState({
@@ -44,7 +53,18 @@ const RegistCompany = () => {
     ) {
       navigate(`/profileworker/${id}`);
     }
+<<<<<<< HEAD
   }, []);
+=======
+    const id = localStorage.getItem('@id');
+    useEffect(()=> {
+        if(localStorage.getItem('@userLogin') && localStorage.getItem('@company')) {    
+            navigate(`/profilecompany/${id}`)
+        } else if(localStorage.getItem('@userLogin') && !localStorage.getItem('@company')) {
+            navigate(`/profileworker/${id}`)
+        }
+    },[])
+>>>>>>> ca6fb8a9e189b277bd83775359d0b3c5dc75d67c
   return (
     <>
       <div className="lg:flex h-[130vh] lg:p-10">
