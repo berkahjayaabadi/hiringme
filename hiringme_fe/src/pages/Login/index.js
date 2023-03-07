@@ -12,7 +12,7 @@ const Login = () => {
         password: ''
     })
     const [validate, setValidate] = useState({error: false, message: ''})
-    const [isWorker, setIsworker] = useState(false);
+    // const [isWorker, setIsworker] = useState(false);
     const navigate = useNavigate()
     const handleLogin = (event)=> {
         event.preventDefault()

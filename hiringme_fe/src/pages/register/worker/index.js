@@ -24,9 +24,7 @@ const RegistWorker = () => {
         }).then((res)=> {
             console.log(res.data.data);
             console.log(res.data.message);
-            if(localStorage.getItem('@userLogin')) {
-                navigate(`/login`);
-            }
+                navigate(`/login`)
         }).catch((err)=> {
             setValidate({error: true, message: err.response.data.message})
         })
