@@ -8,18 +8,33 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { getProfileById } from "../../../redux/actions/ProfileWorker";
 
-const ProfileWorker = () => {
-  const { id } = useParams();
-  console.log(id);
-  const [isToggled, setIsToggled] = useState(false);
-  const { data, loading, error } = useSelector((state) => state.profileWorkers);
-  const navigate = useNavigate();
-  // console.log(data)
+//import { useDispatch, useSelector } from "react-redux";
+// import Footer from "../../../components/Footer/Footer";
+//import { getProfileById } from "../../../redux/actions/ProfileWorker";
+import { useParams } from "react-router-dom";
 
+const ProfileWorker = () => {
   const dispatch = useDispatch();
+
+  const { data, loading, error } = useSelector((state) => state.profileWorkers);
+  // const navigate = useNavigate();
+  console.log(data, "hallo");
+
   useEffect(() => {
     dispatch(getProfileById(id));
   }, [dispatch, id]);
+
+  // const { id } = useParams();
+  // console.log(id);
+  const [isToggled, setIsToggled] = useState(false);
+  // const { data, loading, error } = useSelector((state) => state.profileWorkers);
+  // // const navigate = useNavigate();
+  // console.log(data, "hallo");
+
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getProfileById(id));
+  // }, [dispatch, id]);
   return (
     <>
       <Navbar />
@@ -125,7 +140,7 @@ const ProfileWorker = () => {
           <div>{isToggled ? <Experience /> : <Portofolio />}</div>
           <Link
             className="flex content-center mx-20 justify-center text-center py-3 border-4 border-indigo-900 bg-white text-secondary hover:text-white hover:bg-secondary font-semibold rounded-md lg:mt-20"
-            to="/editprofilework"
+            to={`/editprofilework/${id}`}
           >
             Edit Profile
           </Link>
